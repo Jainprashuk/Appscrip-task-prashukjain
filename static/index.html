@@ -8,10 +8,10 @@
     <title>Discover our products | mettā muse</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Inter stands in for the commercial Simplon Norm (see tokens.css) -->
+    <!-- Inter and Libre Caslon Text stand in for the commercial Figma fonts (see tokens.css) -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Libre+Caslon+Text&display=swap"
     />
     <link rel="stylesheet" href="tokens.css" />
     <link rel="stylesheet" href="styles.css" />
@@ -74,5 +74,231 @@
         </ul>
       </nav>
     </header>
+
+    <main id="main">
+      <!-- Only the mobile frame shows a breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Shop</li>
+        </ol>
+      </nav>
+
+      <header class="page-heading">
+        <h1>Discover our products</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus scelerisque. Dolor
+          integer scelerisque nibh amet mi ut elementum dolor.
+        </p>
+      </header>
+
+      <div class="toolbar">
+        <!-- aria-live announces the new count when filters change (product.md §F2) -->
+        <p class="toolbar__count" aria-live="polite">3425 items</p>
+        <!-- Static page: no behaviour. Next.js toggles the 3/4-column grid here (F-11) -->
+        <button class="toolbar__filter-toggle" type="button">
+          <img src="icons/arrow.svg" alt="" width="16" height="16" />
+          Hide filter
+        </button>
+        <!-- Mobile opens the filter drawer here (F-14) -->
+        <button class="toolbar__filter-open" type="button">Filter</button>
+
+        <!-- Native disclosure, so the menu opens without JS; each option is a real link -->
+        <details class="sort-menu">
+          <summary>
+            Recommended
+            <img src="icons/arrow.svg" alt="" width="16" height="16" />
+          </summary>
+          <ul>
+            <li>
+              <a href="?" aria-current="true">
+                <img src="icons/check.svg" alt="" width="26" height="26" />
+                Recommended
+              </a>
+            </li>
+            <li><a href="?sort=newest">Newest first</a></li>
+            <li><a href="?sort=popular">Popular</a></li>
+            <li><a href="?sort=price-desc">Price : high to low</a></li>
+            <li><a href="?sort=price-asc">Price : low to high</a></li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="listing">
+        <aside class="filters" aria-labelledby="filters-heading">
+          <h2 id="filters-heading" class="visually-hidden">Filters</h2>
+          <!-- A real GET form: without JS, submitting it reloads the page with the filters in the URL -->
+          <form class="filter-form" method="get">
+            <label class="filter-form__customizable">
+              <input type="checkbox" name="customizable" value="true" />
+              Customizable
+            </label>
+
+            <!-- Category and Price are not in the Figma; added in the same style (product.md §8) -->
+            <details class="facet">
+              <summary>
+                <span class="facet__name">Category</span>
+                <span class="facet__selection">All</span>
+                <img src="icons/arrow.svg" alt="" width="16" height="16" />
+              </summary>
+              <fieldset>
+                <legend class="visually-hidden">Category</legend>
+                <button class="facet__clear" type="button">Unselect all</button>
+                <label><input type="checkbox" name="category" value="mens-shirts" /> Men's Shirts</label>
+                <label><input type="checkbox" name="category" value="tops" /> Tops</label>
+                <label><input type="checkbox" name="category" value="womens-bags" /> Women's Bags</label>
+                <label><input type="checkbox" name="category" value="sunglasses" /> Sunglasses</label>
+              </fieldset>
+            </details>
+
+            <details class="facet">
+              <summary>
+                <span class="facet__name">Price</span>
+                <span class="facet__selection">All</span>
+                <img src="icons/arrow.svg" alt="" width="16" height="16" />
+              </summary>
+              <fieldset class="facet__price">
+                <legend class="visually-hidden">Price in USD</legend>
+                <label>Min <input type="number" name="minPrice" min="0" inputmode="numeric" /></label>
+                <label>Max <input type="number" name="maxPrice" min="0" inputmode="numeric" /></label>
+              </fieldset>
+            </details>
+
+            <details class="facet">
+              <summary>
+                <span class="facet__name">Ideal for</span>
+                <span class="facet__selection">All</span>
+                <img src="icons/arrow.svg" alt="" width="16" height="16" />
+              </summary>
+              <fieldset>
+                <legend class="visually-hidden">Ideal for</legend>
+                <button class="facet__clear" type="button">Unselect all</button>
+                <label><input type="checkbox" name="ideal-for" value="men" /> Men (65)</label>
+                <label><input type="checkbox" name="ideal-for" value="women" /> Women (63)</label>
+                <label><input type="checkbox" name="ideal-for" value="baby-kids" /> Baby &amp; Kids (59)</label>
+              </fieldset>
+            </details>
+
+            <details class="facet">
+              <summary>
+                <span class="facet__name">Occasion</span>
+                <span class="facet__selection">All</span>
+                <img src="icons/arrow.svg" alt="" width="16" height="16" />
+              </summary>
+              <fieldset>
+                <legend class="visually-hidden">Occasion</legend>
+                <button class="facet__clear" type="button">Unselect all</button>
+                <label><input type="checkbox" name="occasion" value="rainy-season" /> Rainy Season (1)</label>
+                <label><input type="checkbox" name="occasion" value="casual" /> Casual (3)</label>
+                <label><input type="checkbox" name="occasion" value="wedding" /> Wedding (1)</label>
+                <label><input type="checkbox" name="occasion" value="party" /> Party (10)</label>
+                <label><input type="checkbox" name="occasion" value="regular" /> Regular (2)</label>
+              </fieldset>
+            </details>
+
+            <details class="facet">
+              <summary>
+                <span class="facet__name">Work</span>
+                <span class="facet__selection">All</span>
+                <img src="icons/arrow.svg" alt="" width="16" height="16" />
+              </summary>
+              <fieldset>
+                <legend class="visually-hidden">Work</legend>
+                <button class="facet__clear" type="button">Unselect all</button>
+                <label><input type="checkbox" name="work" value="french-knot" /> French Knot (2)</label>
+                <label><input type="checkbox" name="work" value="zardosi" /> Zardosi (2)</label>
+                <label><input type="checkbox" name="work" value="fancy" /> Fancy (1)</label>
+                <label><input type="checkbox" name="work" value="embroidery" /> Embroidery (1)</label>
+              </fieldset>
+            </details>
+
+            <details class="facet">
+              <summary>
+                <span class="facet__name">Fabric</span>
+                <span class="facet__selection">All</span>
+                <img src="icons/arrow.svg" alt="" width="16" height="16" />
+              </summary>
+              <fieldset>
+                <legend class="visually-hidden">Fabric</legend>
+                <button class="facet__clear" type="button">Unselect all</button>
+                <label><input type="checkbox" name="fabric" value="muslin" /> Muslin (1)</label>
+                <label><input type="checkbox" name="fabric" value="satin-blend" /> Satin Blend (1)</label>
+                <label><input type="checkbox" name="fabric" value="satin" /> Satin (1)</label>
+                <label><input type="checkbox" name="fabric" value="tericoat" /> Tericoat (1)</label>
+                <label><input type="checkbox" name="fabric" value="linen" /> Linen (5)</label>
+                <label><input type="checkbox" name="fabric" value="raw-silk" /> Raw Silk (2)</label>
+                <label><input type="checkbox" name="fabric" value="cotton" /> Cotton (13)</label>
+                <label><input type="checkbox" name="fabric" value="silk" /> Silk (2)</label>
+                <label><input type="checkbox" name="fabric" value="cotton-silk" /> Cotton Silk (3)</label>
+              </fieldset>
+            </details>
+
+            <details class="facet">
+              <summary>
+                <span class="facet__name">Segment</span>
+                <span class="facet__selection">All</span>
+                <img src="icons/arrow.svg" alt="" width="16" height="16" />
+              </summary>
+              <fieldset>
+                <legend class="visually-hidden">Segment</legend>
+                <button class="facet__clear" type="button">Unselect all</button>
+                <label><input type="checkbox" name="segment" value="silver" /> Silver (4)</label>
+                <label><input type="checkbox" name="segment" value="ethnic" /> Ethnic (2)</label>
+                <label><input type="checkbox" name="segment" value="contemporary" /> Contemporary (11)</label>
+              </fieldset>
+            </details>
+
+            <details class="facet">
+              <summary>
+                <span class="facet__name">Suitable for</span>
+                <span class="facet__selection">All</span>
+                <img src="icons/arrow.svg" alt="" width="16" height="16" />
+              </summary>
+              <fieldset>
+                <legend class="visually-hidden">Suitable for</legend>
+                <button class="facet__clear" type="button">Unselect all</button>
+                <label><input type="checkbox" name="suitable-for" value="formal-wear" /> Formal Wear (1)</label>
+                <label><input type="checkbox" name="suitable-for" value="western-wear" /> Western Wear (1)</label>
+                <label><input type="checkbox" name="suitable-for" value="casual-wear" /> Casual Wear (7)</label>
+              </fieldset>
+            </details>
+
+            <details class="facet">
+              <summary>
+                <span class="facet__name">Raw materials</span>
+                <span class="facet__selection">All</span>
+                <img src="icons/arrow.svg" alt="" width="16" height="16" />
+              </summary>
+              <fieldset>
+                <legend class="visually-hidden">Raw materials</legend>
+                <button class="facet__clear" type="button">Unselect all</button>
+                <label><input type="checkbox" name="raw-materials" value="wool" /> Wool (2)</label>
+                <label><input type="checkbox" name="raw-materials" value="leather" /> Leather (2)</label>
+                <label><input type="checkbox" name="raw-materials" value="cotton" /> Cotton (5)</label>
+                <label><input type="checkbox" name="raw-materials" value="cellulosic-fibers" /> Cellulosic Fibers (4)</label>
+              </fieldset>
+            </details>
+
+            <details class="facet">
+              <summary>
+                <span class="facet__name">Pattern</span>
+                <span class="facet__selection">All</span>
+                <img src="icons/arrow.svg" alt="" width="16" height="16" />
+              </summary>
+              <fieldset>
+                <legend class="visually-hidden">Pattern</legend>
+                <button class="facet__clear" type="button">Unselect all</button>
+                <label><input type="checkbox" name="pattern" value="windowpane" /> Windowpane (2)</label>
+                <label><input type="checkbox" name="pattern" value="pinstripes" /> Pinstripes (1)</label>
+                <label><input type="checkbox" name="pattern" value="solid" /> Solid (2)</label>
+                <label><input type="checkbox" name="pattern" value="chalk-stripes" /> Chalk Stripes (2)</label>
+                <label><input type="checkbox" name="pattern" value="slim-fit" /> Slim Fit (1)</label>
+                <label><input type="checkbox" name="pattern" value="tartan" /> Tartan (1)</label>
+              </fieldset>
+            </details>
+          </form>
+        </aside>
+      </div>
+    </main>
   </body>
 </html>

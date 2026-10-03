@@ -21,7 +21,7 @@ Updated by Claude Code at the end of every task (with Prashuk's approval), and r
 |----|------|--------|------|-------|
 | ST-01 | Extract tokens from Figma | done | 2026-10-03 | static/tokens.css; Simplon Norm → Inter, Adobe Caslon Pro → Libre Caslon Text (commercial fonts); mobile sizes come from the phone frame in ST-02 |
 | ST-02 | Header (announcement bar, logo row, icons, nav; mobile variant) | done | 2026-10-03 | index.html + styles.css; all Figma icons saved to static/icons/; mobile menu opens via :target (no JS) |
-| ST-03 | Heading block, toolbar, filter sidebar (`<details>` accordions), sort menu | todo | | |
+| ST-03 | Heading block, toolbar, filter sidebar (`<details>` accordions), sort menu | done | 2026-10-03 | Breadcrumb, H1 block, toolbar + mobile split bar, sort menu (links), GET filter form with 11 accordions; facet values from dbmodal.md |
 | ST-04 | Product grid + card (badge, out-of-stock overlay, heart, price slot) | todo | | |
 | ST-05 | Footer (desktop columns, mobile accordions) | todo | | |
 | ST-06 | Responsive pass at 320 / 375 / 768 / 1024 / 1440 | todo | | |

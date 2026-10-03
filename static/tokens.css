@@ -11,7 +11,8 @@
   --color-icon: #292d32; /* Misc/Icon */
   --color-white: #ffffff; /* Misc/White */
   --color-black: #000000; /* Misc/Black */
-  --color-border: #e5e5e5; /* Not a variable: header bottom border */
+  --color-border: #e5e5e5; /* Not a variable: header bottom border and separators */
+  --color-checkbox-border: #4d4d4d; /* Filter checkboxes */
 
   /* ── Font families ──
      The Figma uses commercial fonts (Simplon Norm, Adobe Caslon Pro) that can't be loaded
@@ -31,6 +32,7 @@
   --font-size-lg: 1.125rem; /* 18px: filters, card name, toolbar, footer links */
   --font-size-xl: 1.25rem; /* 20px: nav tabs, footer headings */
   --font-size-2xl: 1.375rem; /* 22px: intro paragraph under the H1 */
+  --font-size-h1-mobile: 1.5rem; /* 24px: H1 in the Phone/PLP frame */
   --font-size-3xl: 2.25rem; /* 36px: "LOGO" wordmark */
   --font-size-display: 3.75rem; /* 60px: H1 "Discover our products" */
 

@@ -47,6 +47,26 @@ button {
   outline-offset: 2px;
 }
 
+/* Hidden on screen but still read by screen readers (e.g. the "Filters" heading) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Hide the browser's default disclosure triangle; each <summary> draws its own arrow */
+summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
 /* ── Announcement bar ── */
 
 .announcement-bar {
@@ -171,6 +191,240 @@ button {
   text-transform: uppercase;
 }
 
+/* ── Main ── */
+
+main {
+  max-width: var(--page-max-width);
+  margin-inline: auto;
+}
+
+/* ── Breadcrumb (mobile only, as in the Figma) ── */
+
+.breadcrumb ol {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  margin: 0;
+  list-style: none;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.breadcrumb li + li::before {
+  content: '|';
+  margin-right: var(--space-2);
+  color: var(--color-text-tertiary);
+}
+
+.breadcrumb [aria-current='page'] {
+  color: var(--color-text);
+}
+
+/* ── Page heading ── */
+
+.page-heading {
+  padding: 0 var(--space-4) var(--space-6);
+  text-align: center;
+}
+
+.page-heading h1 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-h1-mobile);
+  font-weight: var(--font-weight-regular);
+  text-transform: uppercase;
+}
+
+.page-heading p {
+  margin: 0;
+  font-size: var(--font-size-md);
+  line-height: 22px; /* Figma mobile intro line height */
+}
+
+/* ── Toolbar ── */
+
+/* Mobile: the designed FILTER | RECOMMENDED split bar */
+.toolbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-block: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+.toolbar__count,
+.toolbar__filter-toggle {
+  display: none;
+}
+
+.toolbar__filter-open {
+  padding-block: var(--space-3);
+  border-right: 1px solid var(--color-border);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+/* ── Sort menu ── */
+
+.sort-menu {
+  position: relative;
+  justify-self: center;
+  align-self: center;
+}
+
+.sort-menu summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* arrow.svg points left: -90deg points it down (closed), 90deg up (open) */
+.sort-menu summary img {
+  transform: rotate(-90deg);
+}
+
+.sort-menu[open] summary img {
+  transform: rotate(90deg);
+}
+
+.sort-menu ul {
+  position: absolute;
+  top: calc(100% + var(--space-3));
+  right: 0;
+  z-index: 1;
+  display: grid;
+  gap: 18px; /* Figma: space between options */
+  min-width: 235px; /* Figma: menu width; grows if the fallback font's labels are wider */
+  white-space: nowrap;
+  padding: var(--space-6) 42px var(--space-6) var(--space-6); /* Figma: options end 42px from the right edge */
+  background: var(--color-white);
+  box-shadow: 0 0 7px 1px rgb(163 170 175 / 0.2); /* Figma drop shadow */
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-regular);
+  text-align: right;
+}
+
+.sort-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  line-height: var(--line-height-relaxed);
+}
+
+.sort-menu a[aria-current='true'] {
+  font-weight: var(--font-weight-bold);
+}
+
+/* ── Filters ── */
+
+/* Mobile and tablet open filters in a drawer instead (F-14) */
+.filters {
+  display: none;
+}
+
+.filter-form__customizable {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+/* Square, thin-bordered checkbox from the Figma instead of the browser's default */
+.filter-form input[type='checkbox'] {
+  appearance: none;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border: 1px solid var(--color-checkbox-border);
+  background: var(--color-white);
+}
+
+/* Checked state isn't in the Figma: a filled square inset by a white ring */
+.filter-form input[type='checkbox']:checked {
+  background: var(--color-text);
+  box-shadow: inset 0 0 0 3px var(--color-white);
+}
+
+.filter-form__customizable input[type='checkbox'] {
+  width: 22px; /* Figma: the Customizable checkbox is larger than the facet ones */
+  height: 22px;
+}
+
+/* ── Facet accordion ── */
+
+.facet {
+  padding-block: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Name and arrow on the first row, the current selection ("All") underneath */
+.facet summary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  row-gap: var(--space-2);
+  align-items: center;
+  font-size: var(--font-size-lg);
+}
+
+.facet__name {
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+.facet__selection {
+  grid-column: 1;
+}
+
+.facet summary img {
+  grid-row: 1;
+  grid-column: 2;
+  transform: rotate(-90deg);
+}
+
+.facet[open] summary img {
+  transform: rotate(90deg);
+}
+
+.facet fieldset {
+  display: grid;
+  gap: var(--space-6);
+  justify-items: start;
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  border: 0;
+  font-size: var(--font-size-md);
+}
+
+.facet fieldset label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.facet__clear {
+  color: var(--color-text-tertiary);
+  text-decoration: underline;
+}
+
+.facet__price {
+  grid-template-columns: 1fr 1fr;
+}
+
+.facet__price input {
+  width: 100%;
+  margin-top: var(--space-1);
+  padding: var(--space-2);
+  border: 1px solid var(--color-checkbox-border);
+  font: inherit;
+}
+
 /* ── Desktop (≥ 1024px) ── */
 
 @media (min-width: 64rem) {
@@ -250,5 +504,81 @@ button {
     justify-content: center;
     gap: var(--space-16);
     font-size: var(--font-size-xl);
+  }
+
+  main {
+    padding-inline: var(--space-24);
+  }
+
+  .breadcrumb {
+    display: none;
+  }
+
+  /* Figma: 72px above the H1 and below the intro */
+  .page-heading {
+    padding: 72px 0;
+  }
+
+  .page-heading h1 {
+    margin-bottom: var(--space-4);
+    font-size: var(--font-size-display);
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  .page-heading p {
+    max-width: 721px; /* Figma: intro paragraph width */
+    margin-inline: auto;
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* Count · Hide filter on the left, sort menu on the right */
+  .toolbar {
+    display: flex;
+    align-items: center;
+    column-gap: 80px; /* Figma: count to "Hide filter" */
+    padding-block: var(--space-6);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .toolbar__count {
+    display: block;
+    margin: 0;
+  }
+
+  .toolbar__filter-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-secondary);
+    text-decoration: underline;
+  }
+
+  .toolbar__filter-open {
+    display: none;
+  }
+
+  .sort-menu {
+    margin-left: auto;
+  }
+
+  .sort-menu summary {
+    gap: var(--space-2);
+  }
+
+  /* Sidebar beside the grid: 300px filters, 16px gap (Figma) */
+  .listing {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    gap: var(--space-4);
+    padding-top: var(--space-6);
+  }
+
+  .filters {
+    display: block;
   }
 }
