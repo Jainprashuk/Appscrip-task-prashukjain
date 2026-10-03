@@ -1,0 +1,35 @@
+We're starting the Appscrip PLP take-home. Before anything else, read:
+- CLAUDE.md (root), frontend/CLAUDE.md, backend/CLAUDE.md
+- docs/assignment.pdf
+- docs/product.md and docs/development-plan.md (other docs only when a task needs them)
+
+Then confirm in 5 bullets max what you understood about the workflow and rules. No code yet.
+
+Three rules I care about most, on top of CLAUDE.md:
+
+1. PROPER COMMENTS
+   Follow the comment standard in CLAUDE.md §5 on every file you touch:
+   - a header comment at the top of every file,
+   - TSDoc on every export,
+   - a "why" comment on every non-obvious line.
+   Comments explain why, not what. If I'd need to look something up to explain a line in an interview, it needs a comment or a simpler rewrite.
+
+2. NO IRRELEVANT CODE
+   Write only what the current step needs. That means:
+   - no unused imports, variables, functions, types or CSS classes,
+   - no speculative features, "for later" helpers, or abstractions with one use,
+   - no leftover scaffolding (e.g. create-next-app demo content, default styles, sample routes),
+   - no console.log or debug code, no commented-out code, no placeholder TODOs.
+   If you think something extra is needed, ask first.
+
+3. STOP AT CHECKPOINTS SO I CAN COMMIT
+   Work in small, committable steps: one logical change that builds and passes its checks, usually one task ID or less. At each checkpoint:
+   - run lint/typecheck/tests and the done-when check,
+   - report: what changed (files), how you verified it, deviations, explain-it notes, suggested commit message,
+   - then STOP and wait for me to say "continue".
+   Never run git add/commit/push. Never chain into the next step on your own. If a task is big, split it into several checkpoints and tell me the split up front.
+
+4. Keep proper file structure
+5. dont overcomplicate which can be simplified
+
+Start with /task S-01 once you've confirmed the rules.
