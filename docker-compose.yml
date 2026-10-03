@@ -1,0 +1,21 @@
+# Local development database only. Production uses Neon; nothing here is deployed.
+# Start with `docker compose up -d`; the backend connects with
+# postgresql://postgres:postgres@localhost:5432/appscrip_plp
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      # Throwaway credentials for a database reachable only from this machine, so committing them is safe.
+      # backend/.env.example must use the same user, password and database name.
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: appscrip_plp
+    ports:
+      - '5432:5432'
+    volumes:
+      # Named volume so seeded data survives `docker compose down` (remove it with `down -v`)
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:

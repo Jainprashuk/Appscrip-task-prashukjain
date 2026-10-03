@@ -11,8 +11,8 @@ Updated by Claude Code at the end of every task (with Prashuk's approval), and r
 |----|------|--------|------|-------|
 | S-01 | Create public repo Appscrip-task-PrashukJain | done | 2026-10-03 | Root .gitignore, .editorconfig, .nvmrc, .prettierrc, README skeleton |
 | S-02 | Add docs/ with all five plan docs | done | 2026-10-03 | Plan docs, ai-log, INSTRUCTIONS and progress copied into docs/; docs/projects/ to be removed before submission |
-| S-03 | Add the Claude Code setup | todo | | |
-| S-04 | docker-compose.yml with Postgres 16 | todo | | |
+| S-03 | Add the Claude Code setup | done | 2026-10-03 | CLAUDE.md files and .claude/ at root; brief renamed to docs/assignment.pdf |
+| S-04 | docker-compose.yml with Postgres 16 | blocked | 2026-10-03 | File written; done-when not run: Docker not installed on this machine |
 | S-05 | Accounts: Neon (us-east-1), Render (Virginia), Vercel, cron-job.org | todo | | |
 
 ## Phase 1 — Static HTML/CSS
