@@ -1,0 +1,78 @@
+<!doctype html>
+<!-- Static PLP (Phase 1): plain HTML/CSS version of the Figma, no JavaScript.
+     Its markup becomes the Next.js components in Phase 5, so it is kept semantic. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Discover our products | mettā muse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Inter stands in for the commercial Simplon Norm (see tokens.css) -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap"
+    />
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Figma repeats the same message three times; mobile shows only the first -->
+    <ul class="announcement-bar" aria-label="Announcements">
+      <li><img src="icons/announcement.svg" alt="" width="16" height="16" />Lorem ipsum dolor</li>
+      <li><img src="icons/announcement.svg" alt="" width="16" height="16" />Lorem ipsum dolor</li>
+      <li><img src="icons/announcement.svg" alt="" width="16" height="16" />Lorem ipsum dolor</li>
+    </ul>
+
+    <header class="site-header">
+      <!-- Without JS the menu opens via :target: this link sets #site-nav in the URL -->
+      <a class="site-header__menu-toggle" href="#site-nav" aria-label="Open menu">
+        <img src="icons/menu.svg" alt="" width="18" height="15" />
+      </a>
+      <img class="site-header__logo" src="icons/logo.svg" alt="" width="36" height="36" />
+      <a class="site-header__wordmark" href="/">LOGO</a>
+
+      <!-- Visual only: search, wishlist, bag, profile and language have no behaviour (product.md §3) -->
+      <ul class="site-header__actions">
+        <li>
+          <button type="button" aria-label="Search">
+            <img src="icons/search.svg" alt="" width="24" height="24" />
+          </button>
+        </li>
+        <li>
+          <button type="button" aria-label="Wishlist">
+            <img src="icons/heart.svg" alt="" width="24" height="24" />
+          </button>
+        </li>
+        <li>
+          <button type="button" aria-label="Bag">
+            <img src="icons/bag.svg" alt="" width="24" height="24" />
+          </button>
+        </li>
+        <li class="site-header__desktop-only">
+          <button type="button" aria-label="Profile">
+            <img src="icons/profile.svg" alt="" width="24" height="24" />
+          </button>
+        </li>
+        <li class="site-header__desktop-only">
+          <button class="site-header__language" type="button" aria-label="Language: English">
+            ENG
+            <img src="icons/arrow.svg" alt="" width="16" height="16" />
+          </button>
+        </li>
+      </ul>
+
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <!-- Clearing the URL hash un-targets #site-nav, which hides the mobile menu again -->
+        <a class="site-nav__close" href="#">Close</a>
+        <ul>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Skills</a></li>
+          <li><a href="#">Stories</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+</html>

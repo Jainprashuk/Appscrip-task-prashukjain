@@ -1,0 +1,254 @@
+/* Static PLP styles, mobile-first. Values come from tokens.css; any literal is traced to the Figma.
+   Breakpoints: tablet 40rem (640px), desktop 64rem (1024px). */
+
+/* ── Base ── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-white);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Reset buttons so icon buttons look like the Figma icons, not native buttons */
+button {
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ── Announcement bar ── */
+
+.announcement-bar {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-1) var(--space-4);
+  background: var(--color-black);
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.announcement-bar li {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Figma: icon to text */
+}
+
+.announcement-bar img {
+  width: 14px; /* Figma mobile: 14px icon */
+  height: 14px;
+}
+
+/* Mobile shows a single message */
+.announcement-bar li:not(:first-child) {
+  display: none;
+}
+
+/* ── Header ── */
+
+/* Sticky on mobile, as in the Phone/PLP frame */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 55px; /* Figma mobile header height */
+  padding-inline: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-white);
+}
+
+.site-header__logo {
+  width: 20px; /* Figma mobile logo size */
+  height: 20px;
+}
+
+/* Centred on the header itself, not on the space left between the side groups */
+.site-header__wordmark {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-extra-bold);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-left: auto;
+}
+
+.site-header__actions img {
+  width: 20px; /* Figma mobile icon size */
+  height: 20px;
+}
+
+.site-header__desktop-only {
+  display: none;
+}
+
+.site-header__language {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Figma: "ENG" to arrow */
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* arrow.svg points left; rotating it -90deg makes it point down, as in the Figma */
+.site-header__actions .site-header__language img {
+  width: 16px;
+  height: 16px;
+  transform: rotate(-90deg);
+}
+
+/* ── Main navigation ── */
+
+/* Mobile: hidden until the hamburger link targets it, then a full-screen menu */
+.site-nav {
+  display: none;
+}
+
+.site-nav:target {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-6) var(--space-4);
+  background: var(--color-white);
+}
+
+.site-nav__close {
+  align-self: flex-end;
+  font-size: var(--font-size-md);
+  text-decoration: underline;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+/* ── Desktop (≥ 1024px) ── */
+
+@media (min-width: 64rem) {
+  .announcement-bar {
+    justify-content: space-between;
+    padding: var(--space-2) 19%; /* Figma: items start 274px into the 1440px strip */
+  }
+
+  .announcement-bar img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .announcement-bar li:not(:first-child) {
+    display: flex;
+  }
+
+  /* Two rows: logo icon · wordmark · actions, then the nav centred underneath */
+  .site-header {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas:
+      'logo wordmark actions'
+      'nav nav nav';
+    row-gap: var(--space-16);
+    height: auto;
+    padding: 40px var(--space-24) var(--space-6); /* Figma: logo sits 40px below the strip */
+  }
+
+  .site-header__menu-toggle {
+    display: none;
+  }
+
+  .site-header__logo {
+    grid-area: logo;
+    width: 36px; /* Figma desktop logo size */
+    height: 36px;
+  }
+
+  .site-header__wordmark {
+    grid-area: wordmark;
+    position: static;
+    transform: none;
+    font-size: var(--font-size-3xl);
+  }
+
+  .site-header__actions {
+    grid-area: actions;
+    justify-self: end;
+    gap: var(--space-6);
+  }
+
+  .site-header__actions img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .site-header__desktop-only {
+    display: list-item;
+  }
+
+  .site-nav,
+  .site-nav:target {
+    grid-area: nav;
+    position: static;
+    display: block;
+    padding: 0;
+  }
+
+  .site-nav__close {
+    display: none;
+  }
+
+  .site-nav ul {
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--space-16);
+    font-size: var(--font-size-xl);
+  }
+}

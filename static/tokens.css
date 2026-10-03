@@ -1,0 +1,58 @@
+/* Design tokens extracted from the Figma (frame "Web/PLP/With Filter", 653:492).
+   Values only, no selectors besides :root; ported to frontend/src/app/globals.css in F-01. */
+
+:root {
+  /* ── Colours (named Figma variables unless noted) ── */
+  --color-text: #252020; /* Text/Text */
+  --color-text-secondary: #888792; /* Text/Secondary Text */
+  --color-text-tertiary: #bfc8cd; /* Text/Tertiary Text */
+  --color-primary: #eb4c6b; /* Primary/Primary */
+  --color-background-tint: #fff2f5; /* Misc/BG */
+  --color-icon: #292d32; /* Misc/Icon */
+  --color-white: #ffffff; /* Misc/White */
+  --color-black: #000000; /* Misc/Black */
+  --color-border: #e5e5e5; /* Not a variable: header bottom border */
+
+  /* ── Font families ──
+     The Figma uses commercial fonts (Simplon Norm, Adobe Caslon Pro) that can't be loaded
+     from Google Fonts, so each is replaced by its closest free equivalent. */
+  --font-sans: 'Inter', system-ui, sans-serif; /* Figma: Simplon Norm */
+  --font-serif: 'Libre Caslon Text', Georgia, serif; /* Figma: Adobe Caslon Pro ("Hide filter") */
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500; /* Footer "Subscribe" button */
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800; /* "LOGO" wordmark */
+
+  /* ── Font sizes (desktop; rem so text scales with the user's browser setting) ── */
+  --font-size-xs: 0.75rem; /* 12px: announcement bar, currency note */
+  --font-size-sm: 0.875rem; /* 14px: card price line, copyright */
+  --font-size-md: 1rem; /* 16px: "ENG", "Hide filter", footer contact */
+  --font-size-lg: 1.125rem; /* 18px: filters, card name, toolbar, footer links */
+  --font-size-xl: 1.25rem; /* 20px: nav tabs, footer headings */
+  --font-size-2xl: 1.375rem; /* 22px: intro paragraph under the H1 */
+  --font-size-3xl: 2.25rem; /* 36px: "LOGO" wordmark */
+  --font-size-display: 3.75rem; /* 60px: H1 "Discover our products" */
+
+  --line-height-normal: normal;
+  --line-height-relaxed: 2.5rem; /* 40px: intro paragraph and toolbar row */
+  --letter-spacing-wide: 1px; /* H1, nav tabs, announcement bar, "ENG" */
+
+  /* ── Spacing (named by multiples of 4px) ── */
+  --space-1: 0.25rem; /* 4px: mobile announcement bar padding */
+  --space-2: 0.5rem; /* 8px: card name to price, filter title to "All" */
+  --space-3: 0.75rem; /* 12px: footer social icons */
+  --space-4: 1rem; /* 16px: product grid gap, footer link list */
+  --space-6: 1.5rem; /* 24px: header icons, filter group to separator */
+  --space-16: 4rem; /* 64px: gap between nav tabs */
+  --space-24: 6rem; /* 96px: desktop page side margin */
+
+  /* ── Layout ── */
+  --page-max-width: 90rem; /* 1440px: Figma frame width */
+  --sidebar-width: 18.75rem; /* 300px: filter panel */
+  --card-image-ratio: 3 / 4; /* 300 × 399 card image */
+  --radius-sm: 5px; /* Subscribe button, payment badges */
+
+  /* Breakpoints can't be custom properties (media queries don't read var()).
+     Use these literal values in @media: tablet 40rem (640px), desktop 64rem (1024px). */
+}

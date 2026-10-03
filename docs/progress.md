@@ -13,14 +13,14 @@ Updated by Claude Code at the end of every task (with Prashuk's approval), and r
 | S-02 | Add docs/ with all five plan docs | done | 2026-10-03 | Plan docs, ai-log, INSTRUCTIONS and progress copied into docs/; docs/projects/ to be removed before submission |
 | S-03 | Add the Claude Code setup | done | 2026-10-03 | CLAUDE.md files and .claude/ at root; brief renamed to docs/assignment.pdf |
 | S-04 | docker-compose.yml with Postgres 16 | blocked | 2026-10-03 | File written; done-when not run: Docker not installed on this machine |
-| S-05 | Accounts: Neon (us-east-1), Render (Virginia), Vercel, cron-job.org | todo | | |
+| S-05 | Accounts: Neon (us-east-1), Render (Virginia), Vercel, cron-job.org | in progress | 2026-10-03 | Neon created in us-east-2 (not us-east-1); password reset pending; Render, Vercel, cron-job.org not confirmed |
 
 ## Phase 1 — Static HTML/CSS
 
 | ID | Task | Status | Date | Notes |
 |----|------|--------|------|-------|
-| ST-01 | Extract tokens from Figma | todo | | |
-| ST-02 | Header (announcement bar, logo row, icons, nav; mobile variant) | todo | | |
+| ST-01 | Extract tokens from Figma | done | 2026-10-03 | static/tokens.css; Simplon Norm → Inter, Adobe Caslon Pro → Libre Caslon Text (commercial fonts); mobile sizes come from the phone frame in ST-02 |
+| ST-02 | Header (announcement bar, logo row, icons, nav; mobile variant) | done | 2026-10-03 | index.html + styles.css; all Figma icons saved to static/icons/; mobile menu opens via :target (no JS) |
 | ST-03 | Heading block, toolbar, filter sidebar (`<details>` accordions), sort menu | todo | | |
 | ST-04 | Product grid + card (badge, out-of-stock overlay, heart, price slot) | todo | | |
 | ST-05 | Footer (desktop columns, mobile accordions) | todo | | |
