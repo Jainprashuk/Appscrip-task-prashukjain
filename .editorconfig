@@ -1,0 +1,10 @@
+# Editor settings shared by every file in the repo, so any editor saves files the way Prettier formats them.
+
+# Stop editors searching parent folders for other .editorconfig files
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
